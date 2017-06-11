@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nagarjuna Public School | Ramanagaram Challapalli</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css"/>
+</head>
+<body>
+<div>
+    <table id="table" class="display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Father</th>
+            <th>Village</th>
+            <th>DOJ</th>
+            <th>Admission</th>
+            <th>Medium</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+<script>
+    $.getJSON( "/npshool.github.io/data/nps.json", function( data ) {
+        $(document).ready(function() {
+            console.log(data.length);
+            $('#table').DataTable({
+                "aoData": data,
+                "aoColumns": [
+                    { "mDataProp": "name" },
+                    { "mDataProp": "father" },
+                    { "mDataProp": "village" },
+                    { "mDataProp": "doj" },
+                    { "mDataProp": "admission" },
+                    { "mDataProp": "medium" }
+                ]
+            });
+        });
+    });
+</script>
+</body>
+</html>
