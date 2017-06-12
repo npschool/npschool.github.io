@@ -9,11 +9,11 @@
 <body>
 <div>
     <h1 align="center">Nagarjuna Public School</h1>
-    <table id="table" class="display" cellspacing="0" width="100%">
+    <table id="table" class="display" cellspacing="0" width="100%" data-page-length='25'>
         <thead>
         <tr>
             <th>Name</th>
-            <th>Father</th>
+            <th>Father Name</th>
             <th>Village</th>
             <th>DOJ</th>
             <th>Admission</th>
@@ -30,7 +30,7 @@
         $(document).ready(function() {
             console.log(data.length);
             $('#table').DataTable({
-                "aoData": data,
+                "aaData": data,
                 "aoColumns": [
                     { "mDataProp": "name" },
                     { "mDataProp": "father" },
@@ -41,6 +41,8 @@
                 ]
             });
         });
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("error " + textStatus);
     });
 </script>
 </body>
